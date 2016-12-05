@@ -11,3 +11,13 @@ declare var io : (() => Socket);
 declare module "io" {
     export = io;
 }
+
+// deepcopy
+
+type DeepCopy = (object: any) => any;
+
+declare var copy:DeepCopy;
+
+declare module "deepcopy" {
+    export = copy;
+}

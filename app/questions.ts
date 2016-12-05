@@ -3,6 +3,7 @@
  */
 
 import * as fs from "fs";
+import * as deepcopy from "deepcopy";
 
 export interface Answer {
     answer: string,
@@ -78,10 +79,28 @@ export class Questions{
         return Questions.instance;
     }
 
-    public getRandomQuestion():any {//Question {
+    public getRandomQuestion():Question {
         var size:number = this.questions.length;
         var chosen:number = Math.random()*size|0;
-        return this.questions[chosen];
+        return this.narrow(this.questions[chosen] as MultipleAnswerQuestion);
     }
 
+    private narrow(question: MultipleAnswerQuestion):Question {
+        var q:MultipleAnswerQuestion = deepcopy(question);
+
+        shuffle(q.answers);
+        q.answers = q.answers.slice(0,4);
+
+        return q;
+    }
 }
+
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length; i; i--) {
+        j = Math.floor(Math.random() * i);
+        x = a[i - 1];
+        a[i - 1] = a[j];
+        a[j] = x;
+    }
+};

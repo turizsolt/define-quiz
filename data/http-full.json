@@ -1,0 +1,202 @@
+[
+  {
+    "type": "multiple-answers",
+    "question": "Egy HTTP kérés első sora melyik formátumot követi?",
+    "answers":[
+      {"answer":"metódus erőforrás verzió", "right":true},
+      {"answer":"metódus verzió erőforrás"},
+      {"answer":"erőforrás metódus verzió"},
+      {"answer":"erőforrás verzió metódus"},
+      {"answer":"verzió erőforrás metódus"},
+      {"answer":"verzió metódus erőforrás"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Mi jelzi a HTTP fejlécek végét?",
+    "answers":[
+      {"answer":"egy üres sor", "right":true},
+      {"answer":"új sor karakter"},
+      {"answer":"pontosvessző"},
+      {"answer":"http end"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Egy HTTP válasz első sora melyik formátumot követi?",
+    "answers":[
+      {"answer":"verzió állapotkód indoklás", "right":true},
+      {"answer":"verzió indoklás állapotkód"},
+      {"answer":"állapotkód verzió indoklás"},
+      {"answer":"állapotkód indoklás verzió"},
+      {"answer":"indoklás verzió állapotkód"},
+      {"answer":"indoklás állapotkód verzió"}
+    ]
+  },
+  {
+    "type": "pairing",
+    "question": "Párosítsd össze az alábbi szabvány(oka)t a megfelelő OSI-modell beli réteg(ekk)el",
+    "seed": {"pairs": 4, "left-alone":1, "right-alone":1},
+    "pairs":[
+      {
+        "left":"HTTP",
+        "right":"Alkalmazási réteg"
+      },
+      {
+        "left":"TCP",
+        "right":"Szállítási réteg"
+      },
+      {
+        "left":"UDP",
+        "right":"Szállítási réteg"
+      },
+      {
+        "left":"IP",
+        "right":"Hálózati réteg"
+      },
+      {
+        "left":"MAC",
+        "right":"Fizikai réteg"
+      }
+    ],
+    "left-alone": ["XLR", "HTSLM"],
+    "right-alone": ["Viszonylagi réteg", "Adatkapcsolati réteg"]
+  },
+  {
+    "type": "single-answer",
+    "question": "Mely szabványra épül a HTTP a szállítási rétegben?",
+    "answers":[
+      {"answer":"TCP", "right":true},
+      {"answer":"UDP"},
+      {"answer":"mindkettő"},
+      {"answer":"egyik sem"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Mely metódusok léteznek a HTTP szabványban?",
+    "answers":[
+      {"answer":"HEAD", "right":true},
+      {"answer":"GET", "right":true},
+      {"answer":"POST", "right":true},
+      {"answer":"PUT", "right":true},
+      {"answer":"DELETE", "right":true},
+      {"answer":"TRACE", "right":true},
+      {"answer":"OPTIONS", "right":true},
+      {"answer":"CONNECT", "right":true},
+      {"answer":"PUT"},
+      {"answer":"BREW"},
+      {"answer":"SET"},
+      {"answer":"GOT"},
+      {"answer":"CREATE"},
+      {"answer":"LIST"},
+      {"answer":"TAIL"},
+      {"answer":"LOG"},
+      {"answer":"DROP"},
+      {"answer":"SELECT"}
+    ]
+  },
+  {
+    "type": "single-answer",
+    "question": "Hogyan adhatunk meg egy fejlécet HTTP-ben?",
+    "answers":[
+      {"answer":"fejléc: érték\r\n", "right":true},
+      {"answer":"fejléc: érték\n\r"},
+      {"answer":"fejléc=érték\r\n"},
+      {"answer":"fejléc=érték\n\r"},
+      {"answer":"fejléc=érték;\n"},
+      {"answer":"fejléc->érték\n"}
+    ]
+  },
+  {
+    "type": "pairing",
+    "question": "Párosítsd össze az alábbi állapotkódo(ka)t a jelentés(ükk)el!",
+    "seed": {"pairs": 4, "left-alone":2, "right-alone":2},
+    "pairs":[
+      {
+        "left":"100",
+        "right":"Continue"
+      },
+      {
+        "left":"200",
+        "right":"OK"
+      },
+      {
+        "left":"202",
+        "right":"Accepted"
+      },
+      {
+        "left":"301",
+        "right":"Moved permanently"
+      },
+      {
+        "left":"302",
+        "right":"Found"
+      },
+      {
+        "left":"401",
+        "right":"Unauthorized"
+      },
+      {
+        "left":"403",
+        "right":"Forbidden"
+      },
+      {
+        "left":"404",
+        "right":"Not found"
+      },
+      {
+        "left":"410",
+        "right":"Gone"
+      },
+      {
+        "left":"418",
+        "right":"I'm a teapot"
+      },
+      {
+        "left":"429",
+        "right":"Too Many Requests"
+      },
+      {
+        "left":"500",
+        "right":"Internal server error"
+      },
+      {
+        "left":"501",
+        "right":"Not implemented"
+      },
+      {
+        "left":"503",
+        "right":"Service unavailable"
+      }
+    ],
+    "left-alone": ["600", "007", "666"],
+    "right-alone": ["Unknown Error", "Webserver is restarting", "Client is Insane"]
+  },
+  {
+    "type": "ordering",
+    "question": "Rakd növekvő sorrendbe az alábbi állapotkódokat!",
+    "elements":[
+      {
+        "element":"Continue",
+        "hint":"100, Informational"
+      },
+      {
+        "element":"Accepted",
+        "hint":"202, Success"
+      },
+      {
+        "element":"Moved Permanently",
+        "hint":"301, Redirection"
+      },
+      {
+        "element":"Forbidden",
+        "hint":"403, Client"
+      },
+      {
+        "element":"Internal Server Error",
+        "hint":"500, Server"
+      }
+    ]
+  }
+]

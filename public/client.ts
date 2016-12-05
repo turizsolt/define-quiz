@@ -11,11 +11,10 @@ function getQuestion(){
 };
 
 socket.on('get-question', function(question:Question){
-    $('#questionHolder').text(JSON.stringify(question, null, 2));
+    //$('#questionHolder').text(JSON.stringify(question, null, 2));
 
     if(question.type === "multiple-answers" ||
         question.type === "single-answer"){
-        console.log("maq");
 
         var $maq = $("#multipleAnswerQuestion");
         $maq.empty();
@@ -27,6 +26,14 @@ socket.on('get-question', function(question:Question){
         for(let answer of question.answers){
             var $a = $("<div>").addClass("answer");
             $a.text(answer.answer);
+            $a.on("click", function(e){
+                var $this = $(this);
+                if($this.hasClass("selected")){
+                    $this.removeClass("selected");
+                } else {
+                    $this.addClass("selected");
+                }
+            });
             $maq.append($a);
         }
     } else if (question.type === "ordering") {
