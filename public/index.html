@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <title>Get Question</title>
+</head>
+<body>
+
+<button id="get-button" onclick="getQuestion();">get-question</button>
+
+<pre id="questionHolder">
+</pre>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+    var socket = io();
+
+    function getQuestion(){
+        socket.emit('get-question');
+    };
+
+    socket.on('get-question', function(question){
+        $('#questionHolder').text(JSON.stringify(question, null, 2));
+    });
+</script>
+</body>
+</html>
