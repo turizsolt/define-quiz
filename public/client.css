@@ -1,0 +1,24 @@
+html, body, div {
+    border:0;
+    padding:0;
+    margin:0;
+}
+
+#main{
+    width:400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.question{
+    border: 1px solid black;
+    width: 360px;
+    padding:20px;
+}
+
+.answer{
+    border: 1px solid blue;
+    width: 375px;
+    padding:5px;
+    padding-left: 20px;
+}

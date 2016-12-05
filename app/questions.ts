@@ -19,23 +19,27 @@ export interface Element {
     hint: string
 }
 
-export interface Question {
-    type: string,
-    question: string
-}
+export type Question =
+    MultipleAnswerQuestion |
+    SingleAnswerQuestion |
+    PairingQuestion |
+    OrderingQuestion;
 
-export interface MultipleAnswerQuestion extends Question {
+export interface MultipleAnswerQuestion {
     type: "multiple-answers",
+    question: string,
     answers: Answer[]
 }
 
-export interface SingleAnswerQuestion extends Question {
-    type: "multiple-answers",
+export interface SingleAnswerQuestion {
+    type: "single-answer",
+    question: string,
     answers: Answer[]
 }
 
-export interface PairingQuestion extends Question {
+export interface PairingQuestion {
     type: "pairing",
+    question: string,
     seed?: {
         pairs: number,
         "left-alone": number,
@@ -46,8 +50,9 @@ export interface PairingQuestion extends Question {
     "right-alone"?: string[]
 }
 
-export interface OrderingQuestion extends Question {
+export interface OrderingQuestion {
     type: "ordering",
+    question: string,
     elements:Element[]
 }
 

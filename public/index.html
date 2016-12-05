@@ -1,27 +1,26 @@
 <!doctype html>
 <html>
-<head>
-    <title>Get Question</title>
-</head>
-<body>
+    <head>
+        <title>Get Question</title>
+        <link href="client.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
 
-<button id="get-button" onclick="getQuestion();">get-question</button>
+        <div id="main">
 
-<pre id="questionHolder">
-</pre>
+            <button id="get-button" onclick="getQuestion();">get-question</button>
 
-<script src="/socket.io/socket.io.js"></script>
-<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-<script>
-    var socket = io();
+            <div id="questionWrapper">
+                <div id="multipleAnswerQuestion">
+                </div>
+            </div>
 
-    function getQuestion(){
-        socket.emit('get-question');
-    };
+            <pre id="questionHolder">
+            </pre>
+        </div>
 
-    socket.on('get-question', function(question){
-        $('#questionHolder').text(JSON.stringify(question, null, 2));
-    });
-</script>
-</body>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+        <script src="client.js"></script>
+    </body>
 </html>
