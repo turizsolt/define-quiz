@@ -9,7 +9,23 @@ var socket = io();
 var lastQuestion:Question = null;
 var lastAnswers:JQuery[];
 
-var hashKey:string = null;
+var hashKey:string=null, name:string=null;
+
+$(document).ready(() => {
+    hashKey = window.localStorage.getItem("hashKey") || null;
+    name = window.localStorage.getItem("name") || null;
+
+    if(name && hashKey){
+        $("#name").text(name);
+        startGame();
+    }
+});
+
+function forgetMe(){
+    window.localStorage.clear();
+    window.location.reload(true);
+
+}
 
 var state = "nothing";
 var autoGetQuestion = false;
@@ -52,6 +68,8 @@ function login(){
     //if(loginName.trim().split(" ").length < 2) return;
     $("#name").text(loginName);
 
+    window.localStorage.setItem("name", loginName);
+
     socket.emit('login', {name: loginName});
 }
 
@@ -66,9 +84,14 @@ function setAuto(){
 socket.on('login', (data) => {
     console.log(data);
     hashKey = data.hashKey;
+    window.localStorage.setItem("hashKey", hashKey);
+    startGame();
+});
+
+function startGame(){
     $("#login").hide();
     $("#main").show();
-});
+}
 
 socket.on('feedback', (data) => {
     console.log('feedback', data);

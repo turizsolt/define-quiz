@@ -12,7 +12,8 @@
 
         <div id="main" style="display: none;">
 
-            <div id="name"></div>
+            <div>Name: <div id="name" class="inline"></div> <div class="button" id="forget-me" onclick="forgetMe();">Forget me!</div></div>
+            <hr />
 
             <div class="button" id="get-button" onclick="getQuestion();">get-question</div>
             <input type="checkbox" id="autoQuestion" onchange="setAuto();" /><label for="autoQuestion">Get questions automatically.</label>
@@ -23,6 +24,8 @@
             </div>
 
             <div class="button" id="answer-button" onclick="answerQuestion();">answer-question</div>
+
+            <hr />
 
             <div class="label">Current/Longest streak:</div>
             <div id="currentStreak" class="streak"></div>
@@ -38,6 +41,14 @@
                 <div id="answerWrongSum">0</div>
             </div>
             <div id="answerList" class="streak"></div>
+
+            <hr />
+
+            <div class="footnote">
+                You can select/deselect the answers by pressing 0, 1, 2, 3...
+                buttons and send your answer with either the enter or the space bar.
+                A new question can be automatically requested by the checkbox above.
+            </div>
         </div>
 
         <script src="/socket.io/socket.io.js"></script>

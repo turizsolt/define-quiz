@@ -119,7 +119,7 @@ function getFeedBack(hashKey:string, callback:Callback<any>):void {
             var currentstreak = 0;
             var highestStreak = 0;
             for(let question of user.questions){
-                var correct = question.summary.correct;
+                var correct = (question.summary) ? question.summary.correct : false;
                 corrects.push(correct);
                 if(correct){
                     currentstreak++;

@@ -112,6 +112,10 @@ html, body, div {
     display: inline-block;
 }
 
+.inline{
+    display: inline-block;
+}
+
 .button:hover {
     cursor: pointer;
 }
@@ -124,4 +128,9 @@ html, body, div {
 .label{
     font-size:12px;
 
+}
+
+.footnote {
+    font-size: 12px;
+    font-style: italic;
 }
