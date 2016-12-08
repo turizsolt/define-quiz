@@ -12,19 +12,29 @@ var lastAnswers:JQuery[];
 var hashKey:string = null;
 
 var state = "nothing";
+var autoGetQuestion = false;
 
 function getQuestion(){
-    if(state == "question") return;
+    if(state == "question"){
+        console.log("getQuestion refused.");
+        return;
+    }
     if(!hashKey) return;
     state = "question";
+    console.log("state", state);
 
     $("body").removeClass();
     socket.emit('get-question', {hashKey: hashKey});
 };
 
 function answerQuestion(){
-    if(state != "question") return;
+    if(state != "question") {
+        console.log("answerQuestion refused.");
+        return;
+    }
+
     state = "answer";
+    console.log("state", state);
 
     var selected:number[] = [];
 
@@ -45,12 +55,19 @@ function login(){
     socket.emit('login', {name: loginName});
 }
 
+function setAuto(){
+    autoGetQuestion = $("#autoQuestion").is(":checked");
+    console.log("setAuto", autoGetQuestion);
+    if(autoGetQuestion){
+        getQuestion();
+    }
+}
+
 socket.on('login', (data) => {
     console.log(data);
     hashKey = data.hashKey;
     $("#login").hide();
     $("#main").show();
-
 });
 
 socket.on('feedback', (data) => {
@@ -121,9 +138,11 @@ socket.on('get-question', function(question:Question){
         $q.text(question.question);
         $maq.append($q);
 
+        var num = -1;
         for(let answer of question.answers){
+            num++;
             var $a = $("<div>").addClass("answer");
-            $a.text(answer.answer);
+            $a.text(num+": "+answer.answer);
             $a.on("click", function(e){
                 var $this = $(this);
                 if($this.hasClass("selected")){
@@ -140,6 +159,30 @@ socket.on('get-question', function(question:Question){
     } else if (question.type === "pairing") {
 
     }
+
+    $(document).unbind("keypress");
+
+    $(document).on("keypress", function(e) {
+        var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
+        console.log('pressed: ', charCode);
+        if(state != "question") return;
+        console.log('processed: ', charCode);
+
+
+        if(charCode > 47 && charCode < 52){
+            var child = $("#multipleAnswerQuestion").children()[charCode-48+1];
+            var $this = $(child);
+            if($this.hasClass("selected")){
+                $this.removeClass("selected");
+            } else {
+                $this.addClass("selected");
+            }
+        }
+
+        if(charCode == 13 || charCode == 32){
+            answerQuestion();
+        }
+    }) ;
 
 });
 
@@ -171,6 +214,12 @@ socket.on('answer-question', function(questionQ:{question: Question, correct: bo
     } else if (question.type === "pairing") {
 
     }
+
+    if(autoGetQuestion) setTimeout(() => {
+        if(autoGetQuestion){
+            getQuestion();
+        }
+    },1200);
 });
 
 function getClassByAns(ans){
@@ -179,3 +228,4 @@ function getClassByAns(ans){
     if(ans.selected) return "wrong";
     return "neutral";
 }
+

@@ -7,24 +7,22 @@
     <body>
         <div id="login">
             Add meg a Neved: <input type="name" id="loginName" />
-            <input type="button" onclick="login();" value="Kezdjük!" />
+            <div class="button"  onclick="login();">Kezdjük!</div>
         </div>
 
         <div id="main" style="display: none;">
 
             <div id="name"></div>
 
-            <button id="get-button" onclick="getQuestion();">get-question</button>
+            <div class="button" id="get-button" onclick="getQuestion();">get-question</div>
+            <input type="checkbox" id="autoQuestion" onchange="setAuto();" /><label for="autoQuestion">Get questions automatically.</label>
 
             <div id="questionWrapper">
                 <div id="multipleAnswerQuestion">
                 </div>
             </div>
 
-            <pre id="questionHolder">
-            </pre>
-
-            <button id="answer-button" onclick="answerQuestion();">answer-question</button>
+            <div class="button" id="answer-button" onclick="answerQuestion();">answer-question</div>
 
             <div class="label">Current/Longest streak:</div>
             <div id="currentStreak" class="streak"></div>

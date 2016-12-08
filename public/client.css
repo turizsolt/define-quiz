@@ -105,7 +105,16 @@ html, body, div {
     font-size: 16px;
 }
 
+.button {
+    border:1px solid black;
+    padding: 3px;
+    border-radius: 5px;
+    display: inline-block;
+}
 
+.button:hover {
+    cursor: pointer;
+}
 
 .streak{
     margin-top: 5px;
