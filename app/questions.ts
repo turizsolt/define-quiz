@@ -4,58 +4,9 @@
 
 import * as fs from "fs";
 import * as deepcopy from "deepcopy";
+import {AskedQuestionModel} from "../models/askedQuestion";
+import {Question, MultipleAnswerQuestion} from "./questionInterfaces";
 
-export interface Answer {
-    answer: string,
-    right?: boolean
-}
-
-export interface Pair {
-    left: string,
-    right: string
-}
-
-export interface Element {
-    element: string,
-    hint: string
-}
-
-export type Question =
-    MultipleAnswerQuestion |
-    SingleAnswerQuestion |
-    PairingQuestion |
-    OrderingQuestion;
-
-export interface MultipleAnswerQuestion {
-    type: "multiple-answers",
-    question: string,
-    answers: Answer[]
-}
-
-export interface SingleAnswerQuestion {
-    type: "single-answer",
-    question: string,
-    answers: Answer[]
-}
-
-export interface PairingQuestion {
-    type: "pairing",
-    question: string,
-    seed?: {
-        pairs: number,
-        "left-alone": number,
-        "right-alone": number
-    },
-    pairs: Pair[],
-    "left-alone"?: string[],
-    "right-alone"?: string[]
-}
-
-export interface OrderingQuestion {
-    type: "ordering",
-    question: string,
-    elements:Element[]
-}
 
 export class Questions{
     private questions:Question[] = [];
@@ -72,26 +23,94 @@ export class Questions{
         console.log(this.questions.length+" question(s) loaded from "+indexFiles.files.length+" module(s).");
     }
 
-    public static getInstance() {
+    public static getInstance():Questions {
         if(!Questions.instance){
             Questions.instance = new Questions();
         }
         return Questions.instance;
     }
 
-    public getRandomQuestion():Question {
+    public getRandomQuestion(callback:Callback<Question>):void {
         var size:number = this.questions.length;
         var chosen:number = Math.random()*size|0;
-        return this.narrow(this.questions[chosen] as MultipleAnswerQuestion);
+        var question:Question = this.narrow(this.questions[chosen] as MultipleAnswerQuestion);
+
+        AskedQuestionModel.create({question: question}, (err, createdQuestion) => {
+            if(err){
+                callback(err);
+            } else {
+                question = this.trimRightness(question  as MultipleAnswerQuestion);
+                question.askedId = createdQuestion._id;
+                callback(null, question);
+            }
+        })
     }
 
-    private narrow(question: MultipleAnswerQuestion):Question {
+    public checkAnswer(answer: any, callback:Callback<any>):void {
+        AskedQuestionModel.findById(answer.askedId, (err, askedQuestion) => {
+            if(err) {
+                callback(err);
+            } else {
+                var mergedQuestion:any = deepcopy(askedQuestion.toObject());
+                //console.log('merged', mergedQuestion);
+                for(let sel of answer.selected){
+                    mergedQuestion.question.answers[parseInt(sel, 10)].selected = true;
+                }
+
+                var correct:boolean = true;
+                var right:number = 0;
+                var misses:number = 0;
+                var additional: number = 0;
+
+                for(let answer of mergedQuestion.question.answers){
+                    if(answer.right && answer.selected){
+                        right++;
+                    } else {
+                        if(!answer.right && !answer.selected){
+                            right++;
+                        } else {
+                            correct = false;
+
+                            if(!answer.right){
+                                additional++;
+                            } else if(!answer.selected){
+                                misses++;
+                            }
+                        }
+                    }
+                }
+
+                mergedQuestion.correct = correct;
+                mergedQuestion.summary = {
+                    correct: correct,
+                    right: right,
+                    missies: misses,
+                    additional: additional
+                }
+                console.log("mg", mergedQuestion);
+
+                callback(null, mergedQuestion);
+            }
+        });
+
+    }
+
+    private narrow(question: MultipleAnswerQuestion):MultipleAnswerQuestion {
         var q:MultipleAnswerQuestion = deepcopy(question);
 
         shuffle(q.answers);
         q.answers = q.answers.slice(0,4);
 
         return q;
+    }
+
+    private trimRightness(question: MultipleAnswerQuestion):Question {
+        for(let answer of question.answers){
+            if(answer.right){
+                delete answer.right;
+            }
+        }
+        return question;
     }
 }
 

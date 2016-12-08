@@ -18,6 +18,12 @@ app.use(bodyParser.urlencoded({extended: true}));
 // use the public directory to serve files without parsing it
 app.use(express.static(__dirname+'/public'));
 
+// mongo
+var dbConfig = require('./configs/database');
+var mongoose = require('mongoose');
+// Connect to DB
+mongoose.connect(dbConfig.url);
+
 // add uri routes
 var router = express.Router();
 var routes = defineRoutes(router);

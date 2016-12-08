@@ -16,7 +16,7 @@ html, body, div {
     padding:20px;
 }
 
-.answer{
+.answer, .frozen{
     border: 1px solid blue;
     width: 375px;
     padding:5px;
@@ -29,6 +29,31 @@ html, body, div {
 
 .selected{
     background-color: aquamarine;
+}
+
+
+.correct{
+    background-color: green;
+}
+
+.wrong{
+    background-color: red;
+}
+
+.missed{
+    background-color: yellow;
+}
+
+.neutral{
+    background-color: inherit;
+}
+
+.body-correct{
+    background-color: lightgreen;
+}
+
+.body-incorrect{
+    background-color: lightpink;
 }
 
 .answer {

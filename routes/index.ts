@@ -12,7 +12,13 @@ export function defineRoutes(router) {
     });
 
     router.get('/get', function(req, res) {
-        res.send(questions.getRandomQuestion());
+        questions.getRandomQuestion((err, question) => {
+           if(err){
+               res.send(err);
+           } else {
+               res.send(question);
+           }
+        });
     });
 
     return router;

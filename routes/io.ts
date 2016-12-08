@@ -16,7 +16,25 @@ export function defineIoInteractions(io) {
         });
 
         socket.on('get-question', function(){
-            socket.emit('get-question', questions.getRandomQuestion());
+            questions.getRandomQuestion((err, question) => {
+                if(err){
+                    socket.emit('error', err);
+                } else {
+                    socket.emit('get-question', question);
+                }
+            });
+
+        });
+
+        socket.on('answer-question', function(data){
+            console.log('Answer: ', data);
+            questions.checkAnswer(data, (err, mergedQuestion)=>{
+                if(err){
+                    socket.emit('error', err);
+                } else {
+                    socket.emit('answer-question', mergedQuestion);
+                }
+            });
         });
     });
 
