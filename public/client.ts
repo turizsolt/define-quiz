@@ -9,14 +9,17 @@ var socket = io();
 var lastQuestion:Question = null;
 var lastAnswers:JQuery[];
 
+var hashKey:string = null;
+
 var state = "nothing";
 
 function getQuestion(){
     if(state == "question") return;
+    if(!hashKey) return;
     state = "question";
 
     $("body").removeClass();
-    socket.emit('get-question');
+    socket.emit('get-question', {hashKey: hashKey});
 };
 
 function answerQuestion(){
@@ -30,8 +33,76 @@ function answerQuestion(){
             selected.push(parseInt(ind, 10));
         }
     }
-    socket.emit('answer-question', {askedId: lastQuestion.askedId, selected: selected});
+    socket.emit('answer-question', {askedId: lastQuestion.askedId, selected: selected, hashKey: hashKey});
 };
+
+function login(){
+    var loginName:string = $("#loginName").val();
+    //if(!loginName) return;
+    //if(loginName.trim().split(" ").length < 2) return;
+    $("#name").text(loginName);
+
+    socket.emit('login', {name: loginName});
+}
+
+socket.on('login', (data) => {
+    console.log(data);
+    hashKey = data.hashKey;
+    $("#login").hide();
+    $("#main").show();
+
+});
+
+socket.on('feedback', (data) => {
+    console.log('feedback', data);
+
+    let now = $("#currentStreak").children().length;
+    for(let i=now;i<data.highestStreak;i++){
+        let $streakBall = $("<div>").addClass("streak-ball").text(i+1);
+        $("#currentStreak").append($streakBall);
+    }
+
+    if(data.currentStreak == 0){
+        //$("#currentStreak").empty();
+        console.log("cs0");
+        $("#currentStreak").find(".streak-ball").removeClass("streak-ball").addClass("streak-ball-longest");
+    } else {
+        /*
+        let now = $("#currentStreak").children().length;
+        for(let i=now;i<data.currentStreak;i++){
+            let $streakBall = $("<div>").addClass("streak-ball").text(i+1);
+
+            if(i != 0 && i%20 == 0) $("#currentStreak").append($("<div>"));
+            $("#currentStreak").append($streakBall);
+        }
+        */
+
+        let now = $("#currentStreak").find(".streak-ball").length;
+        let balls = $("#currentStreak").children();
+        for(let i=now;i<data.currentStreak;i++){
+            $(balls[i]).addClass("streak-ball").removeClass("streak-ball-longest");
+        }
+
+    }
+
+
+    /*
+    let now = $("#highestStreak").children().length;
+    for(let i=now;i<data.highestStreak;i++){
+        let $streakBall = $("<div>").addClass("streak-ball").addClass("streak-ball-longest").text(i+1);
+        $("#highestStreak").append($streakBall);
+    }
+    */
+
+    now = $("#answerList").children().length;
+    for(let i=now;i<data.corrects.length;i++){
+        let $streakBall = $("<div>").addClass("answer-ball-"+(data.corrects[i]?"correct":"wrong")).text(i+1);
+        $("#answerList").append($streakBall);
+    }
+
+    $("#answerCorrectSum").text(data.correctSum);
+    $("#answerWrongSum").text(data.wrongSum);
+});
 
 socket.on('get-question', function(question:Question){
     //$('#questionHolder').text(JSON.stringify(question, null, 2));

@@ -5,8 +5,14 @@
         <link href="client.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
+        <div id="login">
+            Add meg a Neved: <input type="name" id="loginName" />
+            <input type="button" onclick="login();" value="Kezdjük!" />
+        </div>
 
-        <div id="main">
+        <div id="main" style="display: none;">
+
+            <div id="name"></div>
 
             <button id="get-button" onclick="getQuestion();">get-question</button>
 
@@ -19,6 +25,21 @@
             </pre>
 
             <button id="answer-button" onclick="answerQuestion();">answer-question</button>
+
+            <div class="label">Current/Longest streak:</div>
+            <div id="currentStreak" class="streak"></div>
+
+            <!--
+            <div class="label">Longest streak:</div>
+            <div id="highestStreak" class="streak"></div>
+            -->
+
+            <div class="label">All answers:</div>
+            <div id="answerSum" class="streak">
+                <div id="answerCorrectSum">0</div>
+                <div id="answerWrongSum">0</div>
+            </div>
+            <div id="answerList" class="streak"></div>
         </div>
 
         <script src="/socket.io/socket.io.js"></script>

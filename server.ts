@@ -22,6 +22,7 @@ app.use(express.static(__dirname+'/public'));
 var dbConfig = require('./configs/database');
 var mongoose = require('mongoose');
 // Connect to DB
+mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.url);
 
 // add uri routes

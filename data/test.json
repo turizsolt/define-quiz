@@ -1,0 +1,12 @@
+[
+  {
+    "type": "multiple-answers",
+    "question": "Melyik jó?",
+    "answers":[
+      {"answer":"jó", "right":true},
+      {"answer":"rossz"},
+      {"answer":"rossz"},
+      {"answer":"rossz"}
+    ]
+  }
+]

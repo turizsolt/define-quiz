@@ -4,7 +4,7 @@
 
 import * as fs from "fs";
 import * as deepcopy from "deepcopy";
-import {AskedQuestionModel} from "../models/askedQuestion";
+import {AskedQuestionModel, AskedQuestionDocument} from "../models/askedQuestion";
 import {Question, MultipleAnswerQuestion} from "./questionInterfaces";
 
 
@@ -30,7 +30,7 @@ export class Questions{
         return Questions.instance;
     }
 
-    public getRandomQuestion(callback:Callback<Question>):void {
+    public getRandomQuestion(callback:Callback2<Question, AskedQuestionDocument>):void {
         var size:number = this.questions.length;
         var chosen:number = Math.random()*size|0;
         var question:Question = this.narrow(this.questions[chosen] as MultipleAnswerQuestion);
@@ -41,7 +41,7 @@ export class Questions{
             } else {
                 question = this.trimRightness(question  as MultipleAnswerQuestion);
                 question.askedId = createdQuestion._id;
-                callback(null, question);
+                callback(null, question, createdQuestion);
             }
         })
     }
@@ -87,9 +87,17 @@ export class Questions{
                     missies: misses,
                     additional: additional
                 }
-                console.log("mg", mergedQuestion);
 
-                callback(null, mergedQuestion);
+                askedQuestion.answerGiven = answer;
+                askedQuestion.summary = mergedQuestion.summary;
+                askedQuestion.save((err, savedAskedQuestion) => {
+                    if(err){
+                        callback(err);
+                    } else {
+                        callback(null, mergedQuestion);
+                    }
+                });
+
             }
         });
 

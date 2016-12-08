@@ -4,21 +4,22 @@ html, body, div {
     margin:0;
 }
 
-#main{
-    width:400px;
+#main, #login{
+    margin-top: 40px;
+    width:420px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .question{
     border: 1px solid black;
-    width: 360px;
+    width: 380px;
     padding:20px;
 }
 
 .answer, .frozen{
     border: 1px solid blue;
-    width: 375px;
+    width: 395px;
     padding:5px;
     padding-left: 20px;
 }
@@ -64,4 +65,54 @@ html, body, div {
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently
                                   not supported by any browser */
+}
+
+.streak-ball, .streak-ball-longest, .answer-ball-correct, .answer-ball-wrong{
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    vertical-align: middle;
+    display:table-cell;
+    border-radius: 10px;
+    color: white;
+    font-size: 10px;
+}
+
+.streak-ball, .answer-ball-correct, #answerCorrectSum {
+    border: 1px solid darkgreen;
+    background-color: green;
+}
+
+.streak-ball-longest {
+    border: 1px solid darkgreen;
+    background-color: inherit;
+    color: green;
+}
+
+.answer-ball-wrong, #answerWrongSum {
+    border: 1px solid darkred;
+    background-color: red;
+}
+
+#answerCorrectSum, #answerWrongSum{
+    width: 38px;
+    height: 38px;
+    text-align: center;
+    vertical-align: middle;
+    display:table-cell;
+    border-radius: 20px;
+    color: white;
+    font-size: 16px;
+}
+
+
+
+.streak{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.label{
+    font-size:12px;
+
 }
