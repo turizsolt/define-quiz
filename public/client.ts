@@ -99,24 +99,13 @@ socket.on('feedback', (data) => {
     let now = $("#currentStreak").children().length;
     for(let i=now;i<data.highestStreak;i++){
         let $streakBall = $("<div>").addClass("streak-ball").text(i+1);
+        if(i != 0 && i%20 == 0) $("#currentStreak").append($("<div>"));
         $("#currentStreak").append($streakBall);
     }
 
     if(data.currentStreak == 0){
-        //$("#currentStreak").empty();
-        console.log("cs0");
         $("#currentStreak").find(".streak-ball").removeClass("streak-ball").addClass("streak-ball-longest");
     } else {
-        /*
-        let now = $("#currentStreak").children().length;
-        for(let i=now;i<data.currentStreak;i++){
-            let $streakBall = $("<div>").addClass("streak-ball").text(i+1);
-
-            if(i != 0 && i%20 == 0) $("#currentStreak").append($("<div>"));
-            $("#currentStreak").append($streakBall);
-        }
-        */
-
         let now = $("#currentStreak").find(".streak-ball").length;
         let balls = $("#currentStreak").children();
         for(let i=now;i<data.currentStreak;i++){
@@ -125,18 +114,10 @@ socket.on('feedback', (data) => {
 
     }
 
-
-    /*
-    let now = $("#highestStreak").children().length;
-    for(let i=now;i<data.highestStreak;i++){
-        let $streakBall = $("<div>").addClass("streak-ball").addClass("streak-ball-longest").text(i+1);
-        $("#highestStreak").append($streakBall);
-    }
-    */
-
     now = $("#answerList").children().length;
     for(let i=now;i<data.corrects.length;i++){
         let $streakBall = $("<div>").addClass("answer-ball-"+(data.corrects[i]?"correct":"wrong")).text(i+1);
+        if(i != 0 && i%20 == 0) $("#answerList").append($("<div>"));
         $("#answerList").append($streakBall);
     }
 
