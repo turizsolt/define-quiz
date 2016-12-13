@@ -106,8 +106,10 @@ export class Questions{
     private narrow(question: MultipleAnswerQuestion):MultipleAnswerQuestion {
         var q:MultipleAnswerQuestion = deepcopy(question);
 
-        shuffle(q.answers);
-        q.answers = q.answers.slice(0,4);
+        if(!(q as any).staysame){
+            shuffle(q.answers);
+            q.answers = q.answers.slice(0,4);
+        }
 
         return q;
     }

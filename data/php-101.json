@@ -1,0 +1,157 @@
+[
+  {
+    "type": "multiple-answers",
+    "question": "Melyik szabályos PHP kifejezés?",
+    "answers":[
+      {"answer":"$almafa", "right":true},
+      {"answer":"$$almafa", "right": true},
+      {"answer":"almafa"},
+      {"answer":"$-almafa"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Melyik php kifejezés értéke igaz PHP-ban? (truthy)",
+    "answers":[
+      {"answer":"\"\""},
+      {"answer":"0"},
+      {"answer":"\"0\""},
+      {"answer":"false"},
+      {"answer":"\"false\"", "right":true},
+      {"answer":"Array()"},
+      {"answer":"null"},
+      {"answer":"(!null)", "right":true},
+      {"answer":"(!!3)", "right":true}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Melyik kifejezés értéke 4 PHP-ban?",
+    "answers":[
+      {"answer":"2+2", "right":true},
+      {"answer":"\"2\"+\"2\"", "right":true},
+      {"answer":"\"2\".\"2\""},
+      {"answer":"2.2"},
+      {"answer":"(int) 4fal"},
+      {"answer":"(int) \"4fal\"", "right":true},
+      {"answer":"0.5+3.5", "right":true},
+      {"answer":"12%8", "right":true},
+      {"answer":"4/3+4/3+4/6+4/6"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "$x = 5; Melyik igaz az alábbiak közül PHP-ban?",
+    "answers":[
+      {"answer":"$x === 5", "right":true},
+      {"answer":"$x === 5.0"},
+      {"answer":"$x == 5.0", "right":true},
+      {"answer":"$x == \"5c\"", "right":true},
+      {"answer":"$x++ === 5", "right":true},
+      {"answer":"++$x === 5"},
+      {"answer":"$++x === 5"},
+      {"answer":"\"$x\" === \"5\"", "right":true}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Melyik igaz az alábbiak közül PHP-ban?",
+    "answers":[
+      {"answer":"4 <= 4", "right":true},
+      {"answer":"4 < 4"},
+      {"answer":"4 > 4"},
+      {"answer":"4 => 4"},
+      {"answer":"4 >= 4", "right": true}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Melyik sor(ok) szintaktikailag hibás(ak) PHP-ban? (Összefüggő kód)",
+    "staysame": true,
+    "answers":[
+      {"answer":"$alma = \"korte\";"},
+      {"answer":"$$alma = 4;"},
+      {"answer":"print --$korte;"},
+      {"answer":"$$korte = 8;"},
+      {"answer":"print $3;", "right":true}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Mely sorokban van a $x változó hatóköre PHP-ban?",
+    "staysame": true,
+    "answers":[
+      {"answer":"$y = 4;"},
+      {"answer":"function almafa($x){", "right":true},
+      {"answer":"  $x = $x*2;", "right":true},
+      {"answer":"  return $x;", "right":true},
+      {"answer":"}", "right":true},
+      {"answer":""},
+      {"answer":"almafa($y);"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Mit ír ki az alábbi PHP kódrészlet: $a = Array(); $a[] = 3; $a[] = 4; echo $a[1];",
+    "answers":[
+      {"answer":"4", "right":true},
+      {"answer":"3"},
+      {"answer":"34"},
+      {"answer":"Hibát ír ki"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Melyik helyes foreach szintaxis PHP-ban?",
+    "answers":[
+      {"answer":"foreach($array as $element) {}", "right":true},
+      {"answer":"foreach($array as $key => $element) {}", "right":true},
+      {"answer":"foreach($array in $element) {}"},
+      {"answer":"foreach($array => $element) {}"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Az almafa objektum terem tagfüggvényét szeretném meghívni, melyik a helyes PHP-ban?",
+    "answers":[
+      {"answer":"$almafa->terem();", "right":true},
+      {"answer":"$almafa.terem();"},
+      {"answer":"$almafa::terem();"},
+      {"answer":"$almafa->$terem();"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Egy PHP objektum tagfüggvénye milyen láthatóságú lesz, ha nem specifikáljuk?",
+    "answers":[
+      {"answer":"public", "right":true},
+      {"answer":"private"},
+      {"answer":"protected"},
+      {"answer":"friend"},
+      {"answer":"volatile"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Van-e elvi hiba az alábbi PHP kódrészletben? Jelöld a hibás sorokat!",
+    "staysame": true,
+    "answers":[
+      {"answer":"class Almafa{"},
+      {"answer":"  var $alma;"},
+      {"answer":"  public function Almafa($db){", "right":true},
+      {"answer":"    $alma = $db;", "right":true},
+      {"answer":"  }"},
+      {"answer":"}"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "A legtöbb esetben melyik változóban kapom meg az űrlap adatait PHP-ban?",
+    "answers":[
+      {"answer":"$_POST", "right":true},
+      {"answer":"$_GET"},
+      {"answer":"$_COOKIE"},
+      {"answer":"$_SERVER"}
+    ]
+  }
+]

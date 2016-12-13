@@ -173,7 +173,7 @@ socket.on('get-question', function(question:Question){
         console.log('processed: ', charCode);
 
 
-        if(charCode > 47 && charCode < 52){
+        if(charCode > 47 && charCode < 58){
             var child = $("#multipleAnswerQuestion").children()[charCode-48+1];
             var $this = $(child);
             if($this.hasClass("selected")){
