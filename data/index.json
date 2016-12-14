@@ -1,6 +1,8 @@
 {
   "files": [
     "http.json",
-    "php-101.json"
+    "php-101.json",
+    "php-102.json",
+    "mysql-101.json"
   ]
 }

@@ -1,0 +1,297 @@
+[
+  {
+    "type": "multiple-answers",
+    "question": "Melyik ciklus ad szintaktikai hibát PHP-ban?",
+    "answers":[
+      {"answer":"f0r($i=0;$i<10;){};", "right": true},
+      {"answer":"for($i=0;true;$i++){};"},
+      {"answer":"for($i=0;10>$i;$i+2){};"},
+      {"answer":"for(;$i<10;$i+=2){};"},
+      {"answer":"for(i=0;$i>10;$i++){};", "right": true},
+      {"answer":"for($i=0;10=>$i;$i++){};", "right": true},
+      {"answer":"for(;;){};"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Melyik kifejezés értéke igaz PHP-ban? (Összefüggő kód!)",
+    "staysame": true,
+    "answers":[
+      {"answer":"$str = '';"},
+      {"answer":"$str == null;", "right":true},
+      {"answer":"$str == false;", "right":true},
+      {"answer":"null == false;", "right":true}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Van egy HTML formom, amin egy input box van az alábbi tulajdonsággal name=\"password\", nincs method beállítva. Melyik PHP változóból tudom kiolvasni majd az értékét?",
+    "answers":[
+      {"answer":"$_GET['password']"},
+      {"answer":"$HTTP_POST_VARS['password']"},
+      {"answer":"$_POST['password']"},
+      {"answer":"$_NOMETHOD['password']"},
+      {"answer":"$password"},
+      {"answer":"$_GLOBALS['_GET']['password']"},
+      {"answer":"nem létezik ilyen változó", "right": true},
+      {"answer":"nincs a válaszok között ilyen változó", "right": true}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Melyik gomb küldi el a HTML formot? (Feltételezve, hogy van egy helyesen megírt formunk.)",
+    "answers":[
+      {"answer":"<input type=\"submit\">", "right":true},
+      {"answer":"<button type=\"submit\">", "right":true},
+      {"answer":"<input type=\"button\">"},
+      {"answer":"<button type=\"button\">"},
+      {"answer":"<button>", "right":true},
+      {"answer":"<input type=\"text\" onclick=\"$('form').submit();\">", "right":true},
+      {"answer":"<input type=\"text\" onclick=\"$(\"form\").submit();\">"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Melyik utasítások futnak le, ha az alábbi PHP kódrészletet hívjuk? (Összefüggő kód!)",
+    "staysame": true,
+    "answers":[
+      {"answer":"$a = 4;", "right":true},
+      {"answer":"if($a%2==0){", "right":true},
+      {"answer":"  die('páros!');", "right":true},
+      {"answer":"} else {"},
+      {"answer":"  echo('páratlan');"},
+      {"answer":"}"},
+      {"answer":"echo('valamelyik');"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Melyik utasítások futnak le, ha az alábbi PHP kódrészletet hívjuk? (Összefüggő kód!)",
+    "staysame": true,
+    "answers":[
+      {"answer":"$a = 3;", "right":true},
+      {"answer":"if($a%2==0){", "right":true},
+      {"answer":"  die('páros!');"},
+      {"answer":"} else {", "right":true},
+      {"answer":"  echo('páratlan');", "right":true},
+      {"answer":"}", "right":true},
+      {"answer":"echo('valamelyik');", "right":true}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Hányszor hívódik meg a fib függvény az alábbi PHP kódban: function fib($n){ return ($n<2?1:(fib($n-1)+fib($n-2)));} fib(3);",
+    "staysame": true,
+    "answers":[
+      {"answer":"2"},
+      {"answer":"3"},
+      {"answer":"4"},
+      {"answer":"5", "right":true},
+      {"answer":"6"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Hányszor hívódik meg a fib függvény az alábbi PHP kódban: function fib($n){ return ($n<2?1:(fib($n-1)+fib($n-2)));} fib(4);",
+    "staysame": true,
+    "answers":[
+      {"answer":"4"},
+      {"answer":"6"},
+      {"answer":"7"},
+      {"answer":"12"},
+      {"answer":"9", "right":true},
+      {"answer":"8"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Mely sorokban van a 0. sorban is lévő $y változó hatóköre PHP-ban?",
+    "staysame": true,
+    "answers":[
+      {"answer":"$y = 4;", "right":true},
+      {"answer":"function almafa($y){"},
+      {"answer":"  $y = $y*2;"},
+      {"answer":"  return $y;"},
+      {"answer":"}"},
+      {"answer":"", "right":true},
+      {"answer":"almafa($y);", "right":true}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Mely sorokban van a $j változó hatóköre PHP-ban?",
+    "staysame": true,
+    "answers":[
+      {"answer":"function almafa($a, $b) {}"},
+      {"answer":"for($i=0;$i<10;$i++){"},
+      {"answer":"  for($j=0;$j<10;$j++){", "right":true},
+      {"answer":"    almafa($i, $j);", "right":true},
+      {"answer":"  }", "right":true},
+      {"answer":"}"},
+      {"answer":"echo false;"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Mely sorokban van az $i változó hatóköre PHP-ban?",
+    "staysame": true,
+    "answers":[
+      {"answer":"function almafa($a, $b) {}"},
+      {"answer":"for($i=0;$i<10;$i++){", "right":true},
+      {"answer":"  for($j=0;$j<10;$j++){", "right":true},
+      {"answer":"    almafa($i, $j);", "right":true},
+      {"answer":"  }", "right":true},
+      {"answer":"}", "right":true},
+      {"answer":"echo false;"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Melyek az almafa aktuális paraméterei az alábbi PHP kódban: function almafa($a, $b){}  $c=3; $d=4; almafa($c, $d);",
+    "answers":[
+      {"answer":"$a"},
+      {"answer":"$b"},
+      {"answer":"$c", "right":true},
+      {"answer":"$d", "right":true},
+      {"answer":"egyik sem"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Melyek az almafa formális paraméterei az alábbi PHP kódban: function almafa($a, $b){}  $c=3; $d=4; almafa($c, $d);",
+    "answers":[
+      {"answer":"$a", "right":true},
+      {"answer":"$b", "right":true},
+      {"answer":"$c"},
+      {"answer":"$d"},
+      {"answer":"egyik sem"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Milyen típusú az alábbi PHP kifejezés:  gettype(3)",
+    "answers":[
+      {"answer":"string", "right":true},
+      {"answer":"integer"},
+      {"answer":"double"},
+      {"answer":"number"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Milyen típusú az alábbi PHP kifejezés:  3",
+    "answers":[
+      {"answer":"string"},
+      {"answer":"integer", "right":true},
+      {"answer":"double"},
+      {"answer":"number"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Milyen típusú az alábbi PHP kifejezés:  3.0",
+    "answers":[
+      {"answer":"string"},
+      {"answer":"integer"},
+      {"answer":"float"},
+      {"answer":"single"},
+      {"answer":"double", "right":true},
+      {"answer":"number"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Milyen típusú az alábbi PHP kifejezés:  2+3.0",
+    "answers":[
+      {"answer":"string"},
+      {"answer":"integer"},
+      {"answer":"float"},
+      {"answer":"single"},
+      {"answer":"double", "right":true},
+      {"answer":"number"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Milyen típusú az alábbi PHP kifejezés:  \"2\".3.0",
+    "answers":[
+      {"answer":"string"},
+      {"answer":"integer"},
+      {"answer":"float"},
+      {"answer":"single"},
+      {"answer":"double"},
+      {"answer":"number"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Egy Almafa osztálybeli objektum terem tagfüggvényét szeretném meghívni az objektum egy másik függvényéből PHP-ban. Melyiket írjam?",
+    "answers":[
+      {"answer":"$this->terem();", "right":true},
+      {"answer":"$almafa->terem();"},
+      {"answer":"$almafa.terem();"},
+      {"answer":"$this.terem();"},
+      {"answer":"$this->$terem();"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Mi(k) a különbség(ek) PHP-ban az include és az include_once függvények között?",
+    "answers":[
+      {"answer":"az égvilágon semmi"},
+      {"answer":"közük nincs egymáshoz"},
+      {"answer":"az include_once csak egyszer tölt be egy adott fájlt", "right":true},
+      {"answer":"az include-dal html fájlt is betölthetünk"},
+      {"answer":"az include jobban támogatja az MVC-t"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Melyik osztálydefiníció hibás PHP-ban? (Összefüggő kód!)",
+    "staysame": true,
+    "answers":[
+      {"answer":"interface Leveles {} interface Torzses {}"},
+      {"answer":"class Fa {} class Cserje {}"},
+      {"answer":"class Almafa extends Fa {}"},
+      {"answer":"class Kortefa extends Fa, Cserje {}", "right":true},
+      {"answer":"class Szilvafa implements Leveles, Torzses {}"},
+      {"answer":"class Eperfa extends Fa implements Leveles {}"},
+      {"answer":"class Eperfa implements Leveles extends Fa {}", "right": true}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Mit rövidít a PHP?",
+    "answers":[
+      {"answer":"Personal Home Page", "right":true},
+      {"answer":"PHP: Hypertext Preprocessor", "right":true},
+      {"answer":"Print Hypertext Pages"},
+      {"answer":"Poor Haskell and Python"},
+      {"answer":"Perform Html Processor"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Mi a visszatérési értéke az alábbi függvénynek, ha $a=\"3\", $b=\"5\" paraméterekkel lett meghívva: function almafa($a, $b) {$return = $a+$b;}",
+    "answers":[
+      {"answer":"null", "right":true},
+      {"answer":"8"},
+      {"answer":"false"},
+      {"answer":"35"},
+      {"answer":"undefined"},
+      {"answer":"true"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Mi a visszatérési értéke az alábbi függvénynek, ha $a=\"3\", $b=\"5\" paraméterekkel lett meghívva: function almafa($a, $b) {return $a+$b;}",
+    "answers":[
+      {"answer":"null"},
+      {"answer":"8"},
+      {"answer":"false"},
+      {"answer":"35", "right":true},
+      {"answer":"undefined"},
+      {"answer":"true"}
+    ]
+  }
+]

@@ -1,0 +1,183 @@
+[
+  {
+    "type": "multiple-answers",
+    "question": "PHP: Melyik mysql utasításokat kell megelőzze egy mysql_connect?",
+    "answers":[
+      {"answer":"mysql_connect()"},
+      {"answer":"mysql_query()", "right": true},
+      {"answer":"mysql_close()", "right":true},
+      {"answer":"mysql_fetch_assoc()", "right":true},
+      {"answer":"mysql_real_escape_string()", "right":true}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "PHP: Melyiket adhat vissza a mysql_query()?",
+    "answers":[
+      {"answer":"true", "right": true},
+      {"answer":"false", "right": true},
+      {"answer":"result resource", "right": true},
+      {"answer":"indexed array"},
+      {"answer":"associative array"},
+      {"answer":"any kind of array"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "PHP: Mi történik, ha a mysql_connect()-et paraméterek nélkül hívjuk meg?",
+    "answers":[
+      {"answer":"A php.ini-ben lévő alapbeállításokkal hívja meg", "right":true},
+      {"answer":"Szinktaktikai hibát jelez"},
+      {"answer":"Warning-ot ad"},
+      {"answer":"A localhost-hoz kapcsolódik root-ként"},
+      {"answer":"Memóriaszeméthez próbál csatlakozni"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Az alábbiak közül melyik SQL lekérdezésnek van visszatérési értéke?",
+    "answers":[
+      {"answer":"SELECT", "right":true},
+      {"answer":"SHOW", "right":true},
+      {"answer":"DESCRIBE", "right":true},
+      {"answer":"EXPLAIN", "right":true},
+      {"answer":"UPDATE"},
+      {"answer":"INSERT"},
+      {"answer":"DELETE"},
+      {"answer":"ALTER"},
+      {"answer":"CREATE"},
+      {"answer":"DROP"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Melyik szabályos SQL kifejezés feltéve, hogy létezik a test tábla?",
+    "answers":[
+      {"answer":"SELECT * FROM 'test';"},
+      {"answer":"SELECT * FROM `test`;", "right":true},
+      {"answer":"SELECT * FROM \"test\";"},
+      {"answer":"SELECT * FROM test;", "right":true}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Melyik szabályos SQL kifejezés feltéve, hogy létezik a test tábla és abban az id oszlop?",
+    "answers":[
+      {"answer":"SELECT id FROM test;", "right":true},
+      {"answer":"SELECT `id` FROM test;", "right":true},
+      {"answer":"SELECT \"id\" FROM test;", "right":true},
+      {"answer":"SELECT 'id' FROM test;", "right":true},
+      {"answer":"SELECT *,'id' FROM test;", "right":true}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Adott egy 5 soros tábla test néven, a DELETE FROM test; utasításnak milyen hatása lehet?",
+    "staysame": true,
+    "answers":[
+      {"answer":"kitöröl legalább 1 sort", "right": true},
+      {"answer":"kitöröl pontosan 1 sort"},
+      {"answer":"kitörli az összes sort", "right": true},
+      {"answer":"semmi, mert hibás a szintaxis"},
+      {"answer":"semmi, mert ilyenkor előtte figyelmeztet"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Adott egy 5 soros tábla test néven, a DELETE FROM test LIMIT 1; utasításnak milyen hatása lehet?",
+    "staysame": true,
+    "answers":[
+      {"answer":"kitöröl legalább 1 sort", "right": true},
+      {"answer":"kitöröl pontosan 1 sort", "right": true},
+      {"answer":"kitörli az összes sort"},
+      {"answer":"semmi, mert hibás a szintaxis"},
+      {"answer":"semmi, mert ilyenkor előtte figyelmeztet"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Hány paramétere van MySQL-ben a LIMIT utasításnak?",
+    "staysame": true,
+    "answers":[
+      {"answer":"nulla"},
+      {"answer":"mindig egy"},
+      {"answer":"mindig kettő"},
+      {"answer":"néha egy, néha kettő", "right":true}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Melyik létező MySQL kulcsszó?",
+    "answers":[
+      {"answer":"SELECT", "right":true},
+      {"answer":"IF NOT EXISTS", "right":true},
+      {"answer":"DISTINCT", "right":true},
+      {"answer":"GROUP BY", "right":true},
+      {"answer":"LEFT JOIN", "right":true},
+      {"answer":"HAVING BY"},
+      {"answer":"DESTROY"},
+      {"answer":"SANTA CLAUS"},
+      {"answer":"REFRESH"},
+      {"answer":"QUERY"},
+      {"answer":"RECREATE"}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "Melyik tulajdonság igaz mindenképpen egy elsődleges kulcsra MySQL-ben?",
+    "answers":[
+      {"answer":"PRIMARY KEY", "right":true},
+      {"answer":"INDEX", "right":true},
+      {"answer":"AUTO_INCREMENT"},
+      {"answer":"NOT NULL", "right": true}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "PHP+MySQL: Melyik helyeken érdemes beállítani az utf-8-at, hogy az adatbázisból megfelelően olvassuk ki és írjuk a szövegeket?",
+    "answers":[
+      {"answer":"MySQL: SET NAMES utf8", "right":true},
+      {"answer":"HTML: meta charset", "right":true},
+      {"answer":"PHP: fájl karakterkódolása", "right":true},
+      {"answer":"MySQL: tábla vagy oszlop illesztése", "right":true}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "MySQL: Melyik sorban van (ha van) szintaktikai hiba? (Összefüggő kód, feltételezve hogy a tábla és mezőnevek léteznek.)",
+    "staysame": true,
+    "answers":[
+      {"answer":"SELECT id, name, password "},
+      {"answer":"FROM users "},
+      {"answer":"WHERE name = 'Zsolt' "},
+      {"answer":"AND password = MD5('almafa') "},
+      {"answer":"ORDER BY name ASC "},
+      {"answer":"LIMIT 0,1; "}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "MySQL: Melyik sorban van (ha van) szintaktikai hiba? (Összefüggő kód, feltételezve hogy a tábla és mezőnevek léteznek.)",
+    "staysame": true,
+    "answers":[
+      {"answer":"SELECT l.*, id, name, password "},
+      {"answer":"FROM users u INNER JOIN logs l ON u.id = l.user "},
+      {"answer":"WHERE name = 'Zsolt' "},
+      {"answer":"AND password = MD5('almafa') "},
+      {"answer":"HAVING id > 10;", "right": true}
+    ]
+  },
+  {
+    "type": "multiple-answers",
+    "question": "MySQL: Melyik sorban van (ha van) szintaktikai hiba? (Összefüggő kód, feltételezve hogy a tábla és mezőnevek léteznek.)",
+    "staysame": true,
+    "answers":[
+      {"answer":"SELECT id, name, password "},
+      {"answer":"FROM users "},
+      {"answer":"WHERE name = 'Zsolt' "},
+      {"answer":"WHERE password = MD5('almafa') ", "right": true},
+      {"answer":"ORDER BY name ASC "},
+      {"answer":"LIMIT 0,1; "}
+    ]
+  }
+]
