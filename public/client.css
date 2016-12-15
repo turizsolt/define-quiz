@@ -136,3 +136,43 @@ html, body, div {
     font-size: 12px;
     font-style: italic;
 }
+
+
+/*****************/
+
+.user-data{
+    display: table-cell;
+    width: 3em;
+    text-align: right;
+    vertical-align: middle;
+    font-size: 150%;
+}
+
+.user:nth-child(even){
+    background-color:lightgray;
+}
+
+.user, .user-data{
+    height:50px;
+}
+
+.hash{
+    font-size:75%;
+    width: 10em;
+    padding-right:1em;
+    opacity: 0;
+}
+
+.hash:hover{
+    opacity: 1;
+}
+
+.name{
+    width: 5em;
+    text-align: left;
+}
+
+.highestStreak{
+    color: green;
+    font-weight: bold;
+}

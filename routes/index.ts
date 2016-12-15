@@ -11,6 +11,10 @@ export function defineRoutes(router) {
         res.sendFile('index.html');
     });
 
+    router.get('/dash', function(req, res) {
+        res.sendFile('dashboard.html');
+    });
+
     router.get('/get', function(req, res) {
         questions.getRandomQuestion((err, question) => {
            if(err){

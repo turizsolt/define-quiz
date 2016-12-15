@@ -11,11 +11,19 @@ var questions = Questions.getInstance();
 
 export function defineIoInteractions(io) {
 
+    var dashes:Socket[] = [];
+
     // define io interactions
     io.on('connection', function(socket){
         console.log('a user connected');
         socket.on('disconnect', function(){
             console.log('user disconnected');
+
+            var pos = dashes.indexOf(socket);
+            if(pos !== -1){
+                dashes.splice(pos, 1);
+                console.log('disconnected viewer of the dashboard');
+            }
         });
 
         socket.on('login', (data: {name: string}) => {
@@ -28,6 +36,11 @@ export function defineIoInteractions(io) {
                 }
             });
         })
+
+        socket.on('login-dashboard', (data: {name: string}) => {
+            dashes.push(socket);
+            console.log('new viewer of the dashboard');
+        });
 
         socket.on('get-question', function(data: {hashKey: string}){
             async.waterfall([
@@ -84,6 +97,10 @@ export function defineIoInteractions(io) {
                             socket.emit('custom-error');
                         } else {
                             socket.emit('feedback', feedback);
+
+                            for(let sock of dashes){
+                                sock.emit('feedback', feedback);
+                            }
                         }
                     });
                 }
@@ -136,7 +153,11 @@ function getFeedBack(hashKey:string, callback:Callback<any>):void {
                 currentStreak: currentstreak,
                 highestStreak: highestStreak,
                 correctSum: correctSum,
-                wrongSum: wrongSum
+                wrongSum: wrongSum,
+                user: {
+                    hashKey: hashKey,
+                    name: user.name
+                }
             });
         }
     });
