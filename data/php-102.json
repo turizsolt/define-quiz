@@ -25,7 +25,7 @@
   },
   {
     "type": "multiple-answers",
-    "question": "Van egy HTML formom, amin egy input box van az alábbi tulajdonsággal name=\"password\", nincs method beállítva. Melyik PHP változóból tudom kiolvasni majd az értékét?",
+    "question": "Van egy HTML formom, amin egy input box van az alábbi tulajdonsággal id=\"password\", nincs method beállítva. Melyik PHP változóból tudom kiolvasni majd az értékét?",
     "answers":[
       {"answer":"$_GET['password']"},
       {"answer":"$HTTP_POST_VARS['password']"},
