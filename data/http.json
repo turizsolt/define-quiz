@@ -45,7 +45,6 @@
       {"answer":"TRACE", "right":true},
       {"answer":"OPTIONS", "right":true},
       {"answer":"CONNECT", "right":true},
-      {"answer":"PUT"},
       {"answer":"BREW"},
       {"answer":"SET"},
       {"answer":"GOT"},
